@@ -28,8 +28,8 @@
 3. Una vez descargado el proyecto, debera restaurar las dependencias de Maven
     - Esto se hace dando click derecho sobre el proyecto => `Build with dependencies`
 4. Debe indicar su usuario y contraseña de la base de datos
-    4.1. Dentro del proyecto, en la carpeta `Other Sources`=>`src\main\resources`, hay un archivo llamado `persistance.xml`
-    4.2. Seleccione la pestaña `Source` y modifique los cambos correspondientes a `User` y `Password` del XML
+    - Dentro del proyecto, en la carpeta `Other Sources`=>`src\main\resources`, hay un archivo llamado `persistance.xml`
+    - Seleccione la pestaña `Source` y modifique los cambos correspondientes a `User` y `Password` del XML
         - Si desea usar otra base de datos (Como SQL Server o PostgreSQL) debe cambiar tambien la directiva del Driver
         - En teoria, esto debe de reestablecer la base de datos, pero si por algun motivo no fue asi, hay un fichero DumpXXXXX.sql en la carpeta raiz de este proyecto
 5. Ejecuta el proyecto, deberia de funcionar.
