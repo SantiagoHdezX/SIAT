@@ -71,6 +71,10 @@ siatApp.controller('usergetTaxiController', function ($scope) {
     }
     $scope.getTaxiSuccess = function () {
         alert('Se ha solicitado el taxi, debe de aparecer en su puerta en menos de 15 minutos');
-        window.location.href = "#/user";
+        window.location.href = '#/user';
+    }
+    $scope.cancelTaxi = function () {
+        alert('Se ha cancelado la operacion');
+        window.location.href = '#/user';
     }
 });

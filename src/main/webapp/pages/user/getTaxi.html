@@ -1,7 +1,7 @@
 ﻿<div class="container">
     <div class="panel panel-default">
         <div class="panel panel-heading">
-           <h2>Solicitud de taxi</h2>
+            <h2>Solicitud de taxi</h2>
         </div>
         <div class="panel panel-body">
             <form name="getTaxi" role="form"></form>
@@ -11,14 +11,14 @@
             </div>
             <div class="form-group">
                 <label for="Direccion">Direccion</label>
-                <input type="text" class="form-control" ng-model="solicitud.Origen" name="Direccion" required placeholder="Ingresa tu domicilio" readonly />
+                <textarea class="form-control" ng-model="solicitud.Origen" name="Direccion" required placeholder="Ingresa tu domicilio" readonly></textarea>
             </div>
             <div class="form-group">
                 <label for="Destino">Destino</label>
-                <input type="text" class="form-control" ng-model="solicitud.Destino" name="Destino" required placeholder="Ingrese su destino" />
+                <textarea class="form-control" ng-model="solicitud.Destino" name="Destino" required placeholder="Ingrese su destino" ></textarea>
             </div>
             <button ng-click="getTaxiSuccess(solicitud)" class="btn btn-success" type="submit">Solicitar</button>
-            <button class="btn btn-danger">Cancelar</button>
+            <button ng-click="cancelTaxi()" class="btn btn-danger">Cancelar</button>
         </div>
     </div>
 </div>
