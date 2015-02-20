@@ -35,7 +35,8 @@ siatApp.controller('mainController', function ($scope) {
     $scope.message = 'Everyone come and see how good I look!';
     $scope.iniciarSesion = function (login) {
         if (login === undefined) {
-            window.location.href = "/";
+            alert('Ingrese sus credenciales para iniciar sesion');
+            window.location.href = "#/";
         }
         else {
             if (login.admin === false) {
