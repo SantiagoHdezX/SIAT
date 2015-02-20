@@ -1,0 +1,20 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <h2>Bitacora de solicitudes</h2>
+            <br />
+            Muestra la cantidad de veces que se han pedido taxis en el mes, ademas de quien y hacia donde
+        </div>
+        <div class="col-lg-9">
+            <table class="table-condensed">
+                <thead>
+                    <tr>
+                        <th>Dia</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="solicitud in solicitudes"></tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -23,16 +23,35 @@ siatApp.config(function ($routeProvider) {
             templateUrl: 'pages/user/getTaxi.html',
             controller: 'usergetTaxiController'
         })
+        .when('/admin', {
+            templateUrl: 'pages/admin/home.html',
+            controller: 'adminController'
+        })
 });
 
 // create the controller and inject Angular's $scope
 siatApp.controller('mainController', function ($scope) {
     // create a message to display in our view
     $scope.message = 'Everyone come and see how good I look!';
-    $scope.iniciarSesion = function () {
-        window.location.href = "#/user";
+    $scope.iniciarSesion = function (login) {
+        if (login === undefined) {
+            window.location.href = "/";
+        }
+        else {
+            if (login.admin === false) {
+                window.location.href = "#/user";
+            }
+            else {
+                window.location.href = "#/admin";
+            }
+        }
     }
 });
+
+siatApp.controller('adminController', function ($scope) {
+    $scope.Usuario = 'Administrador Ejemplo';
+    $scope.personalData = { Nombre: 'Administrador Ejemplo', Domicilio: 'Domicilio Ejemplo' }
+})
 
 siatApp.controller('aboutController', function ($scope) {
     $scope.message = 'Aqui debe de ir la informacion correspondiente a la pagina "Acerca de"';

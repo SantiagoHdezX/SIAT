@@ -18,22 +18,22 @@
                     <h4>Inicio de Sesion</h4>
                 </div>
                 <div class="panel panel-body">
-                    <form name="initSession" role="form" novalidate="" class="ng-pristine ng-valid">
+                    <form name="initSession" role="form" novalidate class="ng-pristine ng-valid">
                         <div class="form-group">
                             <label for="correo">Correo Electronico</label>
-                            <input type="email" class="form-control" name="correo" required="" placeholder="Ingresa tu cuenta de correo electronico">
+                            <input type="email" class="form-control" ng-model="login.email" name="correo" required="" placeholder="Ingresa tu cuenta de correo electronico">
                         </div>
                         <div class="form-group">
                             <label for="passwd">Password</label>
-                            <input type="password" class="form-control" name="passwd" required="" placeholder="Ingresa tu contraseña">
+                            <input type="password" class="form-control" ng-model="login.passwd" name="passwd" required="" placeholder="Ingresa tu contraseña">
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="true">
+                                <input type="checkbox" ng-model="login.admin" value="false">
                                 Selecciona esta opcion si tienes una cuenta de administrador
                             </label>
                         </div>
-                        <button type="submit" ng-click="iniciarSesion()" class="btn btn-default">Enviar</button>
+                        <button type="submit" ng-click="iniciarSesion(login)" class="btn btn-default">Enviar</button>
                     </form>
                 </div>
                 <div class="panel panel-footer">
