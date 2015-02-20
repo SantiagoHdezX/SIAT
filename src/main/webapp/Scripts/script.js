@@ -15,6 +15,10 @@ siatApp.config(function ($routeProvider) {
             templateUrl: 'pages/about.html',
             controller: 'aboutController'
         })
+        .when('/user', {
+            templateUrl: 'pages/user/home.html',
+            controller: 'userHomeController'
+        })
 });
 
 // create the controller and inject Angular's $scope
@@ -25,4 +29,9 @@ siatApp.controller('mainController', function ($scope) {
 
 siatApp.controller('aboutController', function ($scope) {
     $scope.message = 'Aqui debe de ir la informacion correspondiente a la pagina "Acerca de"';
+});
+
+siatApp.controller('userHomeController', function ($scope) {
+    $scope.Usuario = 'Usuario Ejemplo',
+    $scope.personalData = {Nombre: 'Usuario Ejemplo', Domicilio:'Mariano Escobedo 124 Miguel Hidalgo DF'};
 });
