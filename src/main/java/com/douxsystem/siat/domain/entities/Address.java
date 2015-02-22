@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 public class Address implements Serializable {
-
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -30,7 +30,6 @@ public class Address implements Serializable {
     private String Colonia;
     private String Delegacion;
     private String Estado;
-
 
     @OneToOne(mappedBy = "Address")
     private User User;

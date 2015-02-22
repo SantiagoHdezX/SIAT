@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -31,6 +32,7 @@ public class Request implements Serializable {
     
     @ManyToOne
     private TaxiDriver TaxiDriver;
+    
     @ManyToOne
     private User User;
     private String Origen;
@@ -38,10 +40,13 @@ public class Request implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date Departure_Date;
 
+    @OneToOne(mappedBy = "Request")
+    private TaxiQueue TaxiQueue;
+    
     public Request() {
     }
 
-    public Request(Long Id, Long TrackNumber, TaxiDriver TaxiDriver, User User, String Origen, String Destino, Date Departure_Date) {
+    public Request(Long Id, Long TrackNumber, TaxiDriver TaxiDriver, User User, String Origen, String Destino, Date Departure_Date, TaxiQueue TaxiQueue) {
         this.Id = Id;
         this.TrackNumber = TrackNumber;
         this.TaxiDriver = TaxiDriver;
@@ -49,6 +54,7 @@ public class Request implements Serializable {
         this.Origen = Origen;
         this.Destino = Destino;
         this.Departure_Date = Departure_Date;
+        this.TaxiQueue = TaxiQueue;
     }
 
     public Long getId() {
@@ -107,4 +113,11 @@ public class Request implements Serializable {
         this.Departure_Date = Departure_Date;
     }
 
+    public TaxiQueue getTaxiQueue() {
+        return TaxiQueue;
+    }
+
+    public void setTaxiQueue(TaxiQueue TaxiQueue) {
+        this.TaxiQueue = TaxiQueue;
+    }
 }

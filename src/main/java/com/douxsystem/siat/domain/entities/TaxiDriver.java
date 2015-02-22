@@ -35,7 +35,7 @@ public class TaxiDriver implements Serializable {
 
     @OneToOne
     private Taxi Taxi;
-
+    
     @OneToMany(mappedBy = "TaxiDriver")
     private Collection<Request> Requests;
 
