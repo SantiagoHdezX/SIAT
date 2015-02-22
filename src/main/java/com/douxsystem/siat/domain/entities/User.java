@@ -37,6 +37,7 @@ public class User implements Serializable {
     private String Nombre;
     private String ApellidoPaterno;
     private String ApellidoMaterno;
+    private Long Telefono;
     private String CorreoElectronico;
     private String Passwd;
     
@@ -51,11 +52,12 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long Id, String Nombre, String ApellidoPaterno, String ApellidoMaterno, String CorreoElectronico, String Passwd, Address Address, Role Role, Collection<Request> Requests) {
+    public User(Long Id, String Nombre, String ApellidoPaterno, String ApellidoMaterno, Long Telefono, String CorreoElectronico, String Passwd, Address Address, Role Role, Collection<Request> Requests) {
         this.Id = Id;
         this.Nombre = Nombre;
         this.ApellidoPaterno = ApellidoPaterno;
         this.ApellidoMaterno = ApellidoMaterno;
+        this.Telefono = Telefono;
         this.CorreoElectronico = CorreoElectronico;
         this.Passwd = Passwd;
         this.Address = Address;
@@ -93,6 +95,14 @@ public class User implements Serializable {
 
     public void setApellidoMaterno(String ApellidoMaterno) {
         this.ApellidoMaterno = ApellidoMaterno;
+    }
+
+    public Long getTelefono() {
+        return Telefono;
+    }
+
+    public void setTelefono(Long Telefono) {
+        this.Telefono = Telefono;
     }
 
     public String getCorreoElectronico() {
