@@ -32,21 +32,26 @@ public class RoleApplication {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public JsonObject roles() {
+    public JsonObject ReturnAllRoles() {
         factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         EntityManager em = factory.createEntityManager();
         JsonObject jsonb;
         try {
             List<Role> roles = em.createQuery("SELECT r FROM Role r").getResultList();
-            JsonArrayBuilder jsonab = Json.createArrayBuilder();
-            for (Role role : roles) {
-                JsonObjectBuilder jsonob = Json.createObjectBuilder();
-                jsonob.add("ID", role.getId());
-                jsonob.add("Nombre", role.getNombreRol());
-                jsonob.add("NivelAccesso", role.getNivelAccesso());
-                jsonab.add(jsonob);
+            if (roles.size() > 0) {
+                JsonArrayBuilder jsonab = Json.createArrayBuilder();
+                for (Role role : roles) {
+                    JsonObjectBuilder jsonob = Json.createObjectBuilder();
+                    jsonob.add("ID", role.getId());
+                    jsonob.add("Nombre", role.getNombreRol());
+                    jsonob.add("NivelAccesso", role.getNivelAccesso());
+                    jsonab.add(jsonob);
+                }
+                jsonb = Json.createObjectBuilder().add("Status", true).add("Roles", jsonab).build();
             }
-            jsonb = Json.createObjectBuilder().add("Status", true).add("Roles", jsonab).build();
+            else{
+                jsonb = Json.createObjectBuilder().add("Status", false).add("Mensaje", "No hay elementos en 'Roles'").build();
+            }
         } catch (Exception ex) {
             jsonb = Json.createObjectBuilder().add("Status", false).add("Mensaje", ex.getMessage()).build();
         } finally {
