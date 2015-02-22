@@ -6,26 +6,21 @@
 package com.douxsystem.siat.api;
 
 import com.douxsystem.siat.domain.entities.Brand;
-import java.io.StringReader;
-import java.math.BigDecimal;
 import java.util.List;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
-import javax.json.stream.JsonParser;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 /**
  *
@@ -58,7 +53,7 @@ public class BrandApplication {
                     jsonob.add("Origen", brand.getOrigen());
                     jsonab.add(jsonob);
                 }
-                jsonb = Json.createObjectBuilder().add("Brands", jsonab).add("Status", true).build();
+                jsonb = Json.createObjectBuilder().add("Marcas", jsonab).add("Status", true).build();
             } else {
                 jsonb = Json.createObjectBuilder().add("Status", false).add("Mensaje", "No hay elementos en 'Marcas'").build();
             }
