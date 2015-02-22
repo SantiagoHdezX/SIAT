@@ -31,7 +31,8 @@ public class Address implements Serializable {
     private String Delegacion;
     private String Estado;
 
-    @OneToOne(mappedBy = "address")
+
+    @OneToOne(mappedBy = "Address")
     private User User;
 
     public Address() {

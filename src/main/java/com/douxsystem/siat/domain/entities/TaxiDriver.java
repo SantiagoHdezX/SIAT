@@ -29,11 +29,8 @@ public class TaxiDriver implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    private String Nombre;
-    private String ApellidoPaterno;
-    private String ApellidoMaterno;
-    private String Domicilio;
-    private Long Telefono;
+    @OneToOne
+    private User User;
     private String Licencia;
 
     @OneToOne
@@ -45,13 +42,9 @@ public class TaxiDriver implements Serializable {
     public TaxiDriver() {
     }
 
-    public TaxiDriver(Long Id, String Nombre, String ApellidoPaterno, String ApellidoMaterno, String Domicilio, Long Telefono, String Licencia, Taxi Taxi, Collection<Request> Requests) {
+    public TaxiDriver(Long Id, User User, String Licencia, Taxi Taxi, Collection<Request> Requests) {
         this.Id = Id;
-        this.Nombre = Nombre;
-        this.ApellidoPaterno = ApellidoPaterno;
-        this.ApellidoMaterno = ApellidoMaterno;
-        this.Domicilio = Domicilio;
-        this.Telefono = Telefono;
+        this.User = User;
         this.Licencia = Licencia;
         this.Taxi = Taxi;
         this.Requests = Requests;
@@ -65,44 +58,12 @@ public class TaxiDriver implements Serializable {
         this.Id = Id;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public User getUser() {
+        return User;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
-
-    public String getApellidoPaterno() {
-        return ApellidoPaterno;
-    }
-
-    public void setApellidoPaterno(String ApellidoPaterno) {
-        this.ApellidoPaterno = ApellidoPaterno;
-    }
-
-    public String getApellidoMaterno() {
-        return ApellidoMaterno;
-    }
-
-    public void setApellidoMaterno(String ApellidoMaterno) {
-        this.ApellidoMaterno = ApellidoMaterno;
-    }
-
-    public String getDomicilio() {
-        return Domicilio;
-    }
-
-    public void setDomicilio(String Domicilio) {
-        this.Domicilio = Domicilio;
-    }
-
-    public Long getTelefono() {
-        return Telefono;
-    }
-
-    public void setTelefono(Long Telefono) {
-        this.Telefono = Telefono;
+    public void setUser(User User) {
+        this.User = User;
     }
 
     public String getLicencia() {
