@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -87,7 +88,7 @@ public class Car implements Serializable {
     public void setAnio(Long Anio) {
         this.Anio = Anio;
     }
-
+    @XmlTransient
     public Collection<Taxi> getTaxis() {
         return Taxis;
     }

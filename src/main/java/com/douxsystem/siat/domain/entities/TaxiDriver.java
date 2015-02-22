@@ -11,8 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -35,7 +35,8 @@ public class TaxiDriver implements Serializable {
     private String Domicilio;
     private Long Telefono;
     private String Licencia;
-    @ManyToOne
+
+    @OneToOne
     private Taxi Taxi;
 
     @OneToMany(mappedBy = "TaxiDriver")

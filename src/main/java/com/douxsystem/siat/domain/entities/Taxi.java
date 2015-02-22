@@ -6,13 +6,12 @@
 package com.douxsystem.siat.domain.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -31,17 +30,18 @@ public class Taxi implements Serializable {
     private String Placa;
     @ManyToOne
     private Car Car;
-    @OneToMany(mappedBy = "Taxi")
-    private Collection<TaxiDriver> TaxiDrivers;
+
+    @OneToOne(mappedBy = "Taxi")
+    private TaxiDriver TaxiDriver;
 
     public Taxi() {
     }
 
-    public Taxi(Long Id, String Placa, Car Car, Collection<TaxiDriver> TaxiDrivers) {
+    public Taxi(Long Id, String Placa, Car Car, TaxiDriver TaxiDriver) {
         this.Id = Id;
         this.Placa = Placa;
         this.Car = Car;
-        this.TaxiDrivers = TaxiDrivers;
+        this.TaxiDriver = TaxiDriver;
     }
 
     public Long getId() {
@@ -69,12 +69,12 @@ public class Taxi implements Serializable {
     }
     
     @XmlTransient
-    public Collection<TaxiDriver> getTaxiDrivers() {
-        return TaxiDrivers;
+    public TaxiDriver getTaxiDriver() {
+        return TaxiDriver;
     }
 
-    public void setTaxiDrivers(Collection<TaxiDriver> TaxiDrivers) {
-        this.TaxiDrivers = TaxiDrivers;
+    public void setTaxiDriver(TaxiDriver TaxiDriver) {
+        this.TaxiDriver = TaxiDriver;
     }
 
     @Override

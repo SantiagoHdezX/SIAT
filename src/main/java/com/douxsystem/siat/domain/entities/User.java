@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -38,7 +39,10 @@ public class User implements Serializable {
     private String ApellidoMaterno;
     private String CorreoElectronico;
     private String Passwd;
-    private String Domicilio;
+    
+    @OneToOne
+    private Address Address;
+    
     @ManyToOne
     private Role Role;
     @OneToMany(mappedBy = "User")
@@ -47,14 +51,14 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long Id, String Nombre, String ApellidoPaterno, String ApellidoMaterno, String CorreoElectronico, String Passwd, String Domicilio, Role Role, Collection<Request> Requests) {
+    public User(Long Id, String Nombre, String ApellidoPaterno, String ApellidoMaterno, String CorreoElectronico, String Passwd, Address Address, Role Role, Collection<Request> Requests) {
         this.Id = Id;
         this.Nombre = Nombre;
         this.ApellidoPaterno = ApellidoPaterno;
         this.ApellidoMaterno = ApellidoMaterno;
         this.CorreoElectronico = CorreoElectronico;
         this.Passwd = Passwd;
-        this.Domicilio = Domicilio;
+        this.Address = Address;
         this.Role = Role;
         this.Requests = Requests;
     }
@@ -107,12 +111,12 @@ public class User implements Serializable {
         this.Passwd = Passwd;
     }
 
-    public String getDomicilio() {
-        return Domicilio;
+    public Address getAddress() {
+        return Address;
     }
 
-    public void setDomicilio(String Domicilio) {
-        this.Domicilio = Domicilio;
+    public void setAddress(Address Address) {
+        this.Address = Address;
     }
 
     public Role getRole() {
