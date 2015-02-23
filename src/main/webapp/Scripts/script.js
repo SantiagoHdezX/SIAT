@@ -10,6 +10,11 @@ var UserDirective = {
     Passwd: '123456*'
 };
 
+var UserAdmin = {
+    CorreoElectronico: 'administrador@siat.com',
+    Passwd: '123456*'
+};
+
 // configure our routes
 siatApp.config(function ($routeProvider) {
     $routeProvider
@@ -33,6 +38,10 @@ siatApp.config(function ($routeProvider) {
                 templateUrl: 'Views/User/SolicitarTaxi.html',
                 controller: 'UserCtrl'
             })
+            .when('/Central', {
+                templateUrl: 'Views/Central/HomeCentral.html',
+                controller: 'CentralCtrl'
+            })
             // route for the about page
             .when('/about', {
                 templateUrl: 'pages/about.html',
@@ -47,7 +56,7 @@ siatApp.controller('mainController', function ($scope) {
             window.location.href = "#/User";
             break;
         case 2:
-            window.location.href = "#/TaxiDriver";
+            window.location.href = "#/Admin";
             break;
         case 3:
             window.location.href = "#/Central";
@@ -84,13 +93,31 @@ siatApp.controller('mainController', function ($scope) {
                     }
                     break;
                 case 2:
-                    window.location.href = "#/TaxiDriver";
+                    if(login.email === UserAdmin.CorreoElectronico && login.passwd===UserAdmin.Passwd){
+                        localStorage.Role = 2;
+                        window.location.href = "#/Admin";
+                    }
+                    else{
+                        alert('Sus credenciales son incorrectas');
+                    }
                     break;
                 case 3:
+                    if(login.email === UserCentral.CorreoElectronico && login.passwd === UserCentral.Passwd){
+                        localStorage.Role = 3;
+                        window.location.href="#/Central";
+                    }
+                    else{
+                        alert('Sus credenciales son incorrectas');
+                    }
                     window.location.href = "#/Central";
                     break;
                 case 4:
-                    window.location.href = "#/Directive";
+                    if(login.email === UserDirective.CorreoElectronico && login.passwd===UserDirective.Passwd){
+                        localStorage.Role = 4;
+                        window.location.href="#/Directive";
+                    }else{
+                        alert('Sus credenciales son incorrectas');
+                    }
                     break;
                 default:
                     alert('Revise sus datos');
@@ -105,7 +132,7 @@ siatApp.controller('UserCtrl', function ($scope) {
 //            window.location.href = "#/User";
             break;
         case 2:
-            window.location.href = "#/TaxiDriver";
+            window.location.href = "#/Admin";
             break;
         case 3:
             window.location.href = "#/Central";
@@ -145,6 +172,26 @@ siatApp.controller('UserCtrl', function ($scope) {
     };
 });
 
+siatApp.controller('CentralCtrl', function ($scope) {
+    switch (parseInt(localStorage.Role)) {
+        case 1:
+            window.location.href = "#/User";
+            break;
+        case 2:
+            window.location.href = "#/Admin";
+            break;
+        case 3:
+//            window.location.href = "#/Central";
+            break;
+        case 4:
+            window.location.href = "#/Directive";
+            break;
+        default:
+            window.location.href = "#/";
+            break;
+    }
+});
+
 siatApp.controller('RegisterCtrl', function ($scope) {
     $scope.Register = {Address: {Estado: 'Distrito Federal'}};
     $scope.RegistrarUsuario = function (Register) {
@@ -154,30 +201,5 @@ siatApp.controller('RegisterCtrl', function ($scope) {
     };
     $scope.Salir = function () {
         window.location.href = "#/";
-    };
-});
-
-siatApp.controller('adminController', function ($scope) {
-    $scope.Usuario = 'Administrador Ejemplo';
-    $scope.personalData = {Nombre: 'Administrador Ejemplo', Domicilio: 'Domicilio Ejemplo'};
-});
-
-siatApp.controller('aboutController', function ($scope) {
-    $scope.message = 'Aqui debe de ir la informacion correspondiente a la pagina "Acerca de"';
-});
-
-siatApp.controller('usergetTaxiController', function ($scope) {
-    $scope.solicitud = {
-        Nombre: 'Usuario Ejemplo',
-        Origen: 'Mariano Escobedo 124 Miguel Hidalgo DF',
-        Destino: null
-    };
-    $scope.getTaxiSuccess = function () {
-        alert('Se ha solicitado el taxi, debe de aparecer en su puerta en menos de 15 minutos');
-        window.location.href = '#/user';
-    };
-    $scope.cancelTaxi = function () {
-        alert('Se ha cancelado la operacion');
-        window.location.href = '#/user';
     };
 });
