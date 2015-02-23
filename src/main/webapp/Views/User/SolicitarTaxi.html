@@ -1,16 +1,57 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div class="container">
+    <div class="panel panel-success">
+        <div class="panel panel-heading">
+            <h2>Solicitar Taxi</h2>
+        </div>
+        <div class="panel panel-body">
+            <div class="row">
+                <form role="form">
+                    <div class="col-lg-6">
+                        <h3>Origen</h3>
+                        <div class="form-group">
+                            <label for="CalleOrigen">Calle(Origen)</label>
+                            <input type="text" class="form-control" name="CalleOrigen" ng-model="Solicitud.Origen.Calle" placeholder="Ingresa la calle donde tomara el taxi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ColoniaOrigen">Colonia(Origen)</label>
+                            <input type="text" class="form-control" name="ColoniaOrigen" ng-model="Solicitud.Origen.Colonia" placeholder="Ingresa la colonia donde tomara el taxi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="DelegacionOrigen">Delegacion(Origen)</label>
+                            <input type="text" class="form-control" name="DelegacionOrigen" ng-model="Solicitud.Origen.Delegacion" placeholder="Ingresa la delegacion donde tomaras el taxi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="EstadoOrigen">Estado(Origen)</label>
+                            <input type="text" class="form-control" name="EstadoOrigen" ng-model="Solicitud.Origen.Estado" placeholder="Ingrese el estado donde tomara el taxi" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Destino</h3>
+                        <div class="form-group">
+                            <label for="CalleDestino">Calle(Destino)</label>
+                            <input type="text" class="form-control" name="CalleDestino" ng-model="Solicitud.Destino.Calle" placeholder="Ingresa la calle donde lo dejara el taxi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ColoniaOrigen">Colonia(Destino)</label>
+                            <input type="text" class="form-control" name="ColoniaDestino" ng-model="Solicitud.Destino.Colonia" placeholder="Ingresa la colonia donde lo dejara el taxi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="DelegacionOrigen">Delegacion(Destino)</label>
+                            <input type="text" class="form-control" name="DelegacionDestino" ng-model="Solicitud.Destino.Delegacion" placeholder="Ingresa la delegacion donde lo dejara el taxi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="EstadoOrigen">Estado(Destino)</label>
+                            <input type="text" class="form-control" name="EstadoDestino" ng-model="Solicitud.Destino.Estado" placeholder="Ingrese el estado donde lo dejara el taxi" readonly>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success" ng-click="SolicitarTaxi(Solicitud)">Solicitar Taxi</button>
+                    &nbsp;
+                    <a href="#/User" class="btn btn-warning">Salir</a>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-footer">
+
+        </div>
+    </div>
+</div>

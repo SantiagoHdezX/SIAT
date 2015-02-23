@@ -119,17 +119,30 @@ siatApp.controller('UserCtrl', function ($scope) {
     }
 
     $scope.Register = JSON.parse(localStorage.NormalUser);
+    $scope.Solicitud = {Origen: {Estado: 'Distrito Federal'}, Destino: {Estado: 'Distrito Federal'}}
 
     $scope.ActualizarUsuario = function (Register) {
         localStorage.NormalUser = angular.toJson(Register);
         alert('Se ha actualizado el usuario');
         window.location.href = "#/User";
     };
-    
-    $scope.CerrarSesion = function(){
+
+    $scope.SolicitarTaxi = function (Solicitud) {
+        if (!(Solicitud === undefined)) {
+            Solicitud["Usuario"] = JSON.parse(localStorage.NormalUser);
+            localStorage.Solicitud = angular.toJson(Solicitud);
+            alert('Se ha solicitado el taxi');
+            window.location.href = "#/User";
+        }
+        else {
+            alert('Llene correctamente los campos del formulario');
+        }
+    };
+
+    $scope.CerrarSesion = function () {
         localStorage.removeItem("Role");
-        window.location.href="#/";
-    }
+        window.location.href = "#/";
+    };
 });
 
 siatApp.controller('RegisterCtrl', function ($scope) {
