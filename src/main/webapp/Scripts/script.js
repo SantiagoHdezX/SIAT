@@ -1,5 +1,15 @@
 var siatApp = angular.module('siatApp', ['ngRoute']);
 
+var UserCentral = {
+    CorreoElectronico: 'central@siat.com',
+    Passwd: '123456*'
+};
+
+var UserDirective = {
+    CorreoElectronico: 'directivo@siat.com',
+    Passwd: '123456*'
+};
+
 // configure our routes
 siatApp.config(function ($routeProvider) {
     $routeProvider
@@ -35,16 +45,23 @@ siatApp.config(function ($routeProvider) {
 // create the controller and inject Angular's $scope
 siatApp.controller('mainController', function ($scope) {
     // create a message to display in our view
-    $scope.message = 'Everyone come and see how good I look!';
+    $scope.login = {type: 1};
     $scope.iniciarSesion = function (login) {
+        var actualUser = JSON.parse(sessionStorage.NormalUser);
         if (login === undefined) {
-            alert('Ingrese sus credenciales para iniciar sesion');
-            window.location.href = "#/";
+//            alert('Ingrese sus credenciales para iniciar sesion');
+//            window.location.href = "#/";
         }
         else {
             switch (parseInt(login.type.toString())) {
                 case 1:
-                    window.location.href = "#/User";
+                    if (login.email === actualUser.CorreoElectronico && login.passwd === actualUser.Passwd) {
+                        alert('This bullshit works!');
+                        window.location.href = "#/User";
+                    }
+                    else {
+                        alert('Sus credenciales son incorrectas');
+                    }
                     break;
                 case 2:
                     window.location.href = "#/TaxiDriver";
@@ -55,23 +72,23 @@ siatApp.controller('mainController', function ($scope) {
                 case 4:
                     window.location.href = "#/Directive";
                     break;
+                default:
+                    alert('Revise sus datos');
+                    break;
             }
         }
     };
 });
 
-siatApp.controller('RegisterCtrl', function ($scope, $http) {
+siatApp.controller('RegisterCtrl', function ($scope) {
     $scope.Register = {Address: {Estado: 'Distrito Federal'}};
     $scope.RegistrarUsuario = function (Register) {
-        $http.post('/WebAPI/Users/Create', Register)
-                .success(function(data){
-                    alert(data.Status);
-                }).error(function(data){
-                    alert(data);
-                });
+        sessionStorage.NormalUser = angular.toJson(Register);
+        alert('Se ha registrado su usuario exitosamente');
+        window.location.href = '#/';
     };
-    $scope.Salir= function(){
-        window.location.href="#/";
+    $scope.Salir = function () {
+        window.location.href = "#/";
     };
 });
 

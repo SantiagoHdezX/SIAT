@@ -2,14 +2,14 @@
     <div class="row">
         <div class="col-md-7">
             <div class="jumbotron">
-                <div class="container">
-                    <h1>SIAT</h1>
-                    <p>
-                        Es un proyecto diseñado para solicitar y administrar una base de taxis en la Ciudad de Mexico.
-                        Entre sus funciones esta la de ordenar un taxi, llevar un registro de entradas y salidas, etc.
-                    </p>
-                    <p><a class="btn btn-primary btn-lg" role="button" href="#/about">Leer más</a></p>
-                </div>
+
+                <h1>SIAT</h1>
+                <p>
+                    Es un proyecto diseñado para solicitar y administrar una base de taxis en la Ciudad de Mexico.
+                    Entre sus funciones esta la de ordenar un taxi, llevar un registro de entradas y salidas, etc.
+                </p>
+                <p><a class="btn btn-primary btn-lg" role="button" href="#/about">Leer más</a></p>
+
             </div>
         </div>
         <div class="col-md-5">
@@ -18,16 +18,16 @@
                     <h4>Inicio de Sesion</h4>
                 </div>
                 <div class="panel panel-body">
-                    <form name="initSession" role="form" novalidate class="ng-pristine ng-valid">
+                    <form name="initSession" role="form" class="ng-pristine ng-valid">
                         <div class="form-group">
                             <label for="correo">Correo Electronico</label>
-                            <input type="email" class="form-control" ng-model="login.email" name="correo" required="" placeholder="Ingresa tu cuenta de correo electronico">
+                            <input type="email" class="form-control" ng-model="login.email" name="correo" required="required" placeholder="Ingresa tu cuenta de correo electronico">
                         </div>
                         <div class="form-group">
                             <label for="passwd">Password</label>
-                            <input type="password" class="form-control" ng-model="login.passwd" name="passwd" required="" placeholder="Ingresa tu contraseña">
+                            <input type="password" class="form-control" ng-model="login.passwd" name="passwd" required="required" placeholder="Ingresa tu contraseña">
                         </div>
-                        <select class="form-control" name="type" ng-model="login.type">
+                        <select class="form-control" name="type" ng-model="login.type" required="required">
                             <option value="1" ng-selected="selected">Usuario</option>
                             <option value="2">Taxista</option>
                             <option value="3">Central</option>
