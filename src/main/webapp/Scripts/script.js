@@ -1,5 +1,135 @@
 var siatApp = angular.module('siatApp', ['ngRoute']);
 
+var taxistas = [
+    {
+        Unidad: 101,
+        Cromatica: "Bicolor",
+        Placas: "ASDX546",
+        Nombre: "Enrique Godoy Feder",
+        Telefono: 3454354
+    },
+    {
+        Unidad: 102,
+        Cromatica: "Bicolor",
+        Placas: "SDFH834",
+        Nombre: "Pedro Neumann Vargas",
+        Telefono: 28374823
+    },
+    {
+        Unidad: 103,
+        Cromatica: "Bicolor",
+        Placas: "SDHDF423",
+        Nombre: "Ricardo Gonzalez Cabrera",
+        Telefono: 3454353
+    },
+    {
+        Unidad: 104,
+        Cromatica: "Bicolor",
+        Placas: "EMNM4535",
+        Nombre: "Silvio Martinez Gaza",
+        Telefono: 3454354
+    },
+    {
+        Unidad: 105,
+        Cromatica: "Bicolor",
+        Placas: "FIYUT234",
+        Nombre: "Tulio Ganado Ferdinand",
+        Telefono: 987897
+    }, {
+        Unidad: 106,
+        Cromatica: "Bicolor",
+        Placas: "AOISD979",
+        Nombre: "John Fernandez Meyer",
+        Telefono: 12394123
+    }, {
+        Unidad: 101,
+        Cromatica: "Bicolor",
+        Placas: "ASDX546",
+        Nombre: "Enrique Godoy Feder",
+        Telefono: 3454354
+    }
+];
+
+var taxistasServicios = [{
+        Unidad: 101,
+        Cromatica: "Bicolor",
+        Placas: "ASDX546",
+        Nombre: "Enrique Godoy Feder",
+        Telefono: 3454354,
+        Servicio: "Web"
+    },
+    {
+        Unidad: 102,
+        Cromatica: "Bicolor",
+        Placas: "SDFH834",
+        Nombre: "Pedro Neumann Vargas",
+        Telefono: 28374823,
+        Servicio: "Telefonico"
+    },
+    {
+        Unidad: 103,
+        Cromatica: "Bicolor",
+        Placas: "SDHDF423",
+        Nombre: "Ricardo Gonzalez Cabrera",
+        Telefono: 3454353,
+        Servicio: "Telefonico"
+    },
+    {
+        Unidad: 104,
+        Cromatica: "Bicolor",
+        Placas: "EMNM4535",
+        Nombre: "Silvio Martinez Gaza",
+        Telefono: 3454354,
+        Servicio: "Web"
+    },
+    {
+        Unidad: 105,
+        Cromatica: "Bicolor",
+        Placas: "FIYUT234",
+        Nombre: "Tulio Ganado Ferdinand",
+        Telefono: 987897,
+        Servicio: "Telefonico"
+    }, {
+        Unidad: 106,
+        Cromatica: "Bicolor",
+        Placas: "AOISD979",
+        Nombre: "John Fernandez Meyer",
+        Telefono: 12394123,
+        Servicio: "Web"
+    }
+];
+
+var usuarios = [
+    {
+        Address: {
+            Estado: "Distrito Federal",
+            Calle: "Raul Ayala 23",
+            Colonia: "Batiz",
+            Delegacion: "Miguel Hidalgo"
+        },
+        Nombre: "Pedro",
+        ApellidoPaterno: "Solano",
+        ApellidoMaterno: "Flores",
+        CorreoElectronico: "pedrogas@siat.com",
+        Passwd: "90fde957e",
+        Telefono: "46734282"
+    },
+    {
+        Address: {
+            Estado: "Distrito Federal",
+            Calle: "Selene 73",
+            Colonia: "Ricortero",
+            Delegacion: "Gustavo A. Madero"
+        },
+        Nombre: "Laura Gabriela",
+        ApellidoPaterno: "Siller",
+        ApellidoMaterno: "Monroy",
+        CorreoElectronico: "siller@siat.com",
+        Passwd: "90fde957e",
+        Telefono: "823748974"
+    }
+];
+
 var UserCentral = {
     CorreoElectronico: 'central@siat.com',
     Passwd: '123456*'
@@ -296,6 +426,23 @@ siatApp.controller('CentralCtrl', function ($scope) {
 //            Usuario: informacion.Usuario.Nombre + " " + informacion.Usuario.ApellidoPaterno + " " + informacion.Usuario.ApellidoMaterno    
 //        };
     $scope.Bitacoras = bitacoras;
+    $scope.Users = usuarios;
+    if (!(localStorage.NormalUser === undefined)) {
+        var isAlreadyCreated = false;
+        var usuario = JSON.parse(localStorage.NormalUser);
+        for (var User in $scope.Users) {
+            if (User.CorreoElectronico === usuario.CorreoElectronico) {
+                isAlreadyCreated = true;
+            }
+            else {
+                continue;
+            }
+        }
+        if (!isAlreadyCreated) {
+            $scope.Users.push(usuario);
+        }
+    }
+    $scope.Taxis = taxistas;
     $scope.CerrarSesion = function () {
         localStorage.removeItem("Role");
         window.location.href = "#/";
