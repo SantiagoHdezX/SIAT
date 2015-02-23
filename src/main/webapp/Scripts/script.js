@@ -178,7 +178,7 @@ siatApp.controller('UserCtrl', function ($scope) {
     }
 
     $scope.Register = JSON.parse(localStorage.NormalUser);
-    $scope.Solicitud = {Origen: {Estado: 'Distrito Federal'}, Destino: {Estado: 'Distrito Federal'}}
+    $scope.Solicitud = {Origen: {Estado: 'Distrito Federal'}, Destino: {Estado: 'Distrito Federal'}};
 
     $scope.ActualizarUsuario = function (Register) {
         localStorage.NormalUser = angular.toJson(Register);
@@ -222,6 +222,7 @@ siatApp.controller('AdminCtrl', function ($scope) {
             window.location.href = "#/";
             break;
     }
+    
     $scope.CerrarSesion = function () {
         localStorage.removeItem("Role");
         window.location.href = "#/";
@@ -246,6 +247,47 @@ siatApp.controller('CentralCtrl', function ($scope) {
             window.location.href = "#/";
             break;
     }
+    $scope.Bitacoras=[
+        {
+            Servicios:'Web',
+            Unidad: '101',
+            Origen: 'Matlacoatl 240 Col Santa Maria la Ribera Iztapalapa',
+            Destino: 'Mar Arafura 204 Col Tacuba Miguel Hidalgo',
+            Usuario: 'Pedro Solano Flores'
+        },
+        {
+            Servicios: 'Telefonico',
+            Unidad: '102',
+            Origen: 'Siempreviva 400 Kaveri Iztapalapa',
+            Destino : 'Mariano Escobedo 122 Polanco Miguel Hidalgo',
+            Usuario : 'Gerardo Ponce'
+            
+        },
+        {
+            Servicios: 'Telefonico',
+            Unidad: '103',
+            Origen: 'La Condesa 973 Cuauhtemoc',
+            Destino : 'Ratanoketon 232 La Armada Alvaro Obregon',
+            Usuario : 'Gloria Ravelo'
+            
+        },
+        {
+            Servicios: 'Web',
+            Unidad: '104',
+            Origen: 'Siempreviva 400 Kaveri Iztapalapa',
+            Destino : 'Calle 11 La punta de la Andromeda Tlalpan',
+            Usuario : 'Laura Gabriela Siller Monroy'
+            
+        },
+        {
+            Servicios: 'Telefonico',
+            Unidad: '105',
+            Origen: 'Natalia 123 Col Pedro de Almazan Azcapotzalco',
+            Destino : 'Ricardo Arjona 376 Benito Juarez',
+            Usuario : 'Anna Silvia Vazquez Hernandez'
+            
+        }
+];
     $scope.CerrarSesion = function () {
         localStorage.removeItem("Role");
         window.location.href = "#/";
