@@ -5,6 +5,8 @@
  */
 package com.douxsystem.siat.api;
 
+import com.douxsystem.siat.domain.entities.Address;
+import com.douxsystem.siat.domain.entities.Role;
 import com.douxsystem.siat.domain.entities.User;
 import java.math.BigDecimal;
 import java.util.List;
@@ -69,7 +71,36 @@ public class UserApplication {
     @Path("/Create")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public JsonObject Create(UserApplication user) {
-        return null;
+    public JsonObject Create(JsonObject user) {
+        factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        Role role = new Role();
+        role.setId(Long.valueOf("1"));
+        role.setNombreRol("Usuario");
+        role.setNivelAccesso(Byte.parseByte("1"));
+        em.getTransaction().begin();
+        em.persist(role);
+        em.getTransaction().commit();
+        JsonObject _address = user.getJsonObject("Address");
+        Address address = new Address();
+        address.setCalle(_address.getString("Calle"));
+        address.setColonia(_address.getString("Colonia"));
+        address.setDelegacion(_address.getString("Delegacion"));
+        address.setEstado(_address.getString("Estado"));
+        em.getTransaction().begin();
+        em.persist(address);
+        em.getTransaction().commit();
+        User cuser = new User();
+        cuser.setNombre(user.getString("Nombre"));
+        cuser.setApellidoPaterno(user.getString("ApellidoPaterno"));
+        cuser.setApellidoMaterno(user.getString("ApellidoMaterno"));
+        cuser.setCorreoElectronico(user.getString("CorreoElectronico"));
+        cuser.setPasswd(user.getString("Passwd"));
+        cuser.setAddress(address);
+        cuser.setRole(role);
+        em.getTransaction().begin();
+        em.persist(cuser);
+        em.getTransaction().commit();
+        return Json.createObjectBuilder().add("Status", true).build();
     }
 }

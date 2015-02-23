@@ -60,10 +60,15 @@ siatApp.controller('mainController', function ($scope) {
     };
 });
 
-siatApp.controller('RegisterCtrl', function ($scope) {
+siatApp.controller('RegisterCtrl', function ($scope, $http) {
     $scope.Register = {Address: {Estado: 'Distrito Federal'}};
     $scope.RegistrarUsuario = function (Register) {
-        alert('Se ha registrado con exito');
+        $http.post('/WebAPI/Users/Create', Register)
+                .success(function(data){
+                    alert(data.Status);
+                }).error(function(data){
+                    alert(data);
+                });
     };
     $scope.Salir= function(){
         window.location.href="#/";
