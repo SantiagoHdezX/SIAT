@@ -1,16 +1,46 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+﻿<div class="container">
+    <h3>Bienvenido, {{Register.Nombre}}</h3>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="panel panel-info">
+                <div class="panel panel-heading">
+                    Datos personales
+                </div>
+                <div class="panel panel-body">
+                    <p><b>Nombre</b>: {{Register.Nombre}} {{Register.ApellidoPaterno}} {{Register.ApellidoMaterno}}</p>
+                    <p><b>Domicilio</b>: {{Register.Address.Calle}} {{Register.Address.Colonia}}, {{Register.Address.Delegacion}} {{Register.Address.Estado}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="jumbotron">
+                <h1>Solicitar taxi</h1>
+                <p class="lead">
+                    Si usted tiene necesidad de un taxi, puede solicitarlo directamente en la opcion de abajo.
+                    <br/>
+                    Nota:De momento, solo pueden recogerlo en su domicilio
+                </p>
+                <p><a class="btn btn-lg btn-success" href="#/User/SolicitarTaxi" role="button">Solicitar taxi</a></p>
+            </div>
+
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-lg-5">
+                    <h2>Administrar perfil</h2>
+                    <p>Puede cambiar su informacion personal y de contacto dando click en la opcion de abajo</p>
+                    <p><a class="btn btn-primary" href="#/User/Datos" role="button">Administrar perfil &raquo;</a></p>
+                </div>
+                <div class="col-lg-2">
+                    <!--<h2>Ver bitacora</h2>
+                    <p>Visualize un informe sobre las peticiones de taxi que ha realizado ultimamente, destino y origen incluidos</p>
+                    <p><a class="btn btn-primary" href="#" role="button">Ver bitacora &raquo;</a></p>-->
+                </div>
+                <div class="col-lg-5">
+                    <h2>Quejas y sugerencias</h2>
+                    <p>Si tienes alguna queja o sugerencia acerca del servicio, puedes hacernoslo saber en la opcion de abajo </p>
+                    <p><a class="btn btn-primary" href="#" role="button">Informar &raquo;</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,8 +13,6 @@ var UserDirective = {
 // configure our routes
 siatApp.config(function ($routeProvider) {
     $routeProvider
-
-            // route for the home page
             .when('/', {
                 templateUrl: 'Views/Home.html',
                 controller: 'mainController'
@@ -23,22 +21,22 @@ siatApp.config(function ($routeProvider) {
                 templateUrl: 'Views/Register.html',
                 controller: 'RegisterCtrl'
             })
+            .when('/User', {
+                templateUrl: 'Views/User/HomeUser.html',
+                controller: 'UserCtrl'
+            })
+            .when('/User/Datos', {
+                templateUrl: 'Views/User/Datos.html',
+                controller: 'UserCtrl'
+            })
+            .when('/User/SolicitarTaxi', {
+                templateUrl: 'Views/User/SolicitarTaxi.html',
+                controller: 'UserCtrl'
+            })
             // route for the about page
             .when('/about', {
                 templateUrl: 'pages/about.html',
                 controller: 'aboutController'
-            })
-            .when('/user', {
-                templateUrl: 'pages/user/home.html',
-                controller: 'userHomeController'
-            })
-            .when('/user/getTaxi', {
-                templateUrl: 'pages/user/getTaxi.html',
-                controller: 'usergetTaxiController'
-            })
-            .when('/admin', {
-                templateUrl: 'pages/admin/home.html',
-                controller: 'adminController'
             });
 });
 
@@ -47,7 +45,6 @@ siatApp.controller('mainController', function ($scope) {
     // create a message to display in our view
     $scope.login = {type: 1};
     $scope.iniciarSesion = function (login) {
-        var actualUser = JSON.parse(sessionStorage.NormalUser);
         if (login === undefined) {
 //            alert('Ingrese sus credenciales para iniciar sesion');
 //            window.location.href = "#/";
@@ -55,12 +52,18 @@ siatApp.controller('mainController', function ($scope) {
         else {
             switch (parseInt(login.type.toString())) {
                 case 1:
-                    if (login.email === actualUser.CorreoElectronico && login.passwd === actualUser.Passwd) {
-                        alert('This bullshit works!');
-                        window.location.href = "#/User";
+                    if (localStorage.NormalUser === undefined) {
+                        alert('No hay usuario registrado');
                     }
                     else {
-                        alert('Sus credenciales son incorrectas');
+                        var actualUser = JSON.parse(localStorage.NormalUser);
+                        if (login.email === actualUser.CorreoElectronico && login.passwd === actualUser.Passwd) {
+                            localStorage.Role = 1;
+                            window.location.href = "#/User";
+                        }
+                        else {
+                            alert('Sus credenciales son incorrectas');
+                        }
                     }
                     break;
                 case 2:
@@ -79,17 +82,24 @@ siatApp.controller('mainController', function ($scope) {
         }
     };
 });
+siatApp.controller('UserCtrl', function ($scope) {
+    $scope.Register = JSON.parse(localStorage.NormalUser);
+});
 
 siatApp.controller('RegisterCtrl', function ($scope) {
     $scope.Register = {Address: {Estado: 'Distrito Federal'}};
     $scope.RegistrarUsuario = function (Register) {
-        sessionStorage.NormalUser = angular.toJson(Register);
+        localStorage.NormalUser = angular.toJson(Register);
         alert('Se ha registrado su usuario exitosamente');
         window.location.href = '#/';
     };
     $scope.Salir = function () {
         window.location.href = "#/";
     };
+});
+
+siatApp.controller('DatosUserCtrl', function ($scope) {
+    $scope.Register = JSON.parse(localStorage.NormalUser);
 });
 
 siatApp.controller('adminController', function ($scope) {
@@ -101,23 +111,18 @@ siatApp.controller('aboutController', function ($scope) {
     $scope.message = 'Aqui debe de ir la informacion correspondiente a la pagina "Acerca de"';
 });
 
-siatApp.controller('userHomeController', function ($scope) {
-    $scope.Usuario = 'Usuario Ejemplo',
-            $scope.personalData = {Nombre: 'Usuario Ejemplo', Domicilio: 'Mariano Escobedo 124 Miguel Hidalgo DF'};
-});
-
 siatApp.controller('usergetTaxiController', function ($scope) {
     $scope.solicitud = {
         Nombre: 'Usuario Ejemplo',
         Origen: 'Mariano Escobedo 124 Miguel Hidalgo DF',
         Destino: null
-    },
+    };
     $scope.getTaxiSuccess = function () {
         alert('Se ha solicitado el taxi, debe de aparecer en su puerta en menos de 15 minutos');
         window.location.href = '#/user';
-    },
-            $scope.cancelTaxi = function () {
-                alert('Se ha cancelado la operacion');
-                window.location.href = '#/user';
-            };
+    };
+    $scope.cancelTaxi = function () {
+        alert('Se ha cancelado la operacion');
+        window.location.href = '#/user';
+    };
 });
