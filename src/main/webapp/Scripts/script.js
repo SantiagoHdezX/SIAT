@@ -42,6 +42,23 @@ siatApp.config(function ($routeProvider) {
 
 // create the controller and inject Angular's $scope
 siatApp.controller('mainController', function ($scope) {
+    switch (parseInt(localStorage.Role)) {
+        case 1:
+            window.location.href = "#/User";
+            break;
+        case 2:
+            window.location.href = "#/TaxiDriver";
+            break;
+        case 3:
+            window.location.href = "#/Central";
+            break;
+        case 4:
+            window.location.href = "#/Directive";
+            break;
+        default:
+//            window.location.href = "#/";
+            break;
+    }
     // create a message to display in our view
     $scope.login = {type: 1};
     $scope.iniciarSesion = function (login) {
@@ -83,7 +100,36 @@ siatApp.controller('mainController', function ($scope) {
     };
 });
 siatApp.controller('UserCtrl', function ($scope) {
+    switch (parseInt(localStorage.Role)) {
+        case 1:
+//            window.location.href = "#/User";
+            break;
+        case 2:
+            window.location.href = "#/TaxiDriver";
+            break;
+        case 3:
+            window.location.href = "#/Central";
+            break;
+        case 4:
+            window.location.href = "#/Directive";
+            break;
+        default:
+            window.location.href = "#/";
+            break;
+    }
+
     $scope.Register = JSON.parse(localStorage.NormalUser);
+
+    $scope.ActualizarUsuario = function (Register) {
+        localStorage.NormalUser = angular.toJson(Register);
+        alert('Se ha actualizado el usuario');
+        window.location.href = "#/User";
+    };
+    
+    $scope.CerrarSesion = function(){
+        localStorage.removeItem("Role");
+        window.location.href="#/";
+    }
 });
 
 siatApp.controller('RegisterCtrl', function ($scope) {
@@ -96,10 +142,6 @@ siatApp.controller('RegisterCtrl', function ($scope) {
     $scope.Salir = function () {
         window.location.href = "#/";
     };
-});
-
-siatApp.controller('DatosUserCtrl', function ($scope) {
-    $scope.Register = JSON.parse(localStorage.NormalUser);
 });
 
 siatApp.controller('adminController', function ($scope) {
