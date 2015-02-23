@@ -31,5 +31,5 @@
     - Dentro del proyecto, en la carpeta `Other Sources`=>`src\main\resources`, hay un archivo llamado `persistance.xml`
     - Seleccione la pestaña `Source` y modifique los cambos correspondientes a `User` y `Password` del XML
         - Si desea usar otra base de datos (Como SQL Server o PostgreSQL) debe cambiar tambien la directiva del Driver
-        - En teoria, esto debe de reestablecer la base de datos, pero si por algun motivo no fue asi, hay un fichero DumpXXXXX.sql en la carpeta raiz de este proyecto
+        - En teoria, esto debe de reestablecer la base de datos, pero si por algun motivo no fue asi, puede generar los scripts a traves de `New`=>`Other...` y dentro de las categorias, seleccionar `Persistance`=>`DB Scripts from Entity classes`
 5. Ejecuta el proyecto, deberia de funcionar.
