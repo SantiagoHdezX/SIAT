@@ -15,6 +15,48 @@ var UserAdmin = {
     Passwd: '123456*'
 };
 
+var bitacoras = [
+    {
+        Servicios: 'Web',
+        Unidad: '101',
+        Origen: 'Matlacoatl 240 Col Santa Maria la Ribera Iztapalapa',
+        Destino: 'Mar Arafura 204 Col Tacuba Miguel Hidalgo',
+        Usuario: 'Pedro Solano Flores'
+    },
+    {
+        Servicios: 'Telefonico',
+        Unidad: '102',
+        Origen: 'Siempreviva 400 Kaveri Iztapalapa',
+        Destino: 'Mariano Escobedo 122 Polanco Miguel Hidalgo',
+        Usuario: 'Gerardo Ponce'
+
+    },
+    {
+        Servicios: 'Telefonico',
+        Unidad: '103',
+        Origen: 'La Condesa 973 Cuauhtemoc',
+        Destino: 'Ratanoketon 232 La Armada Alvaro Obregon',
+        Usuario: 'Gloria Ravelo'
+
+    },
+    {
+        Servicios: 'Web',
+        Unidad: '104',
+        Origen: 'Siempreviva 400 Kaveri Iztapalapa',
+        Destino: 'Calle 11 La punta de la Andromeda Tlalpan',
+        Usuario: 'Laura Gabriela Siller Monroy'
+
+    },
+    {
+        Servicios: 'Telefonico',
+        Unidad: '105',
+        Origen: 'Natalia 123 Col Pedro de Almazan Azcapotzalco',
+        Destino: 'Ricardo Arjona 376 Benito Juarez',
+        Usuario: 'Anna Silvia Vazquez Hernandez'
+
+    }
+];
+
 // configure our routes
 siatApp.config(function ($routeProvider) {
     $routeProvider
@@ -222,7 +264,7 @@ siatApp.controller('AdminCtrl', function ($scope) {
             window.location.href = "#/";
             break;
     }
-    
+
     $scope.CerrarSesion = function () {
         localStorage.removeItem("Role");
         window.location.href = "#/";
@@ -247,47 +289,13 @@ siatApp.controller('CentralCtrl', function ($scope) {
             window.location.href = "#/";
             break;
     }
-    $scope.Bitacoras=[
-        {
-            Servicios:'Web',
-            Unidad: '101',
-            Origen: 'Matlacoatl 240 Col Santa Maria la Ribera Iztapalapa',
-            Destino: 'Mar Arafura 204 Col Tacuba Miguel Hidalgo',
-            Usuario: 'Pedro Solano Flores'
-        },
-        {
-            Servicios: 'Telefonico',
-            Unidad: '102',
-            Origen: 'Siempreviva 400 Kaveri Iztapalapa',
-            Destino : 'Mariano Escobedo 122 Polanco Miguel Hidalgo',
-            Usuario : 'Gerardo Ponce'
-            
-        },
-        {
-            Servicios: 'Telefonico',
-            Unidad: '103',
-            Origen: 'La Condesa 973 Cuauhtemoc',
-            Destino : 'Ratanoketon 232 La Armada Alvaro Obregon',
-            Usuario : 'Gloria Ravelo'
-            
-        },
-        {
-            Servicios: 'Web',
-            Unidad: '104',
-            Origen: 'Siempreviva 400 Kaveri Iztapalapa',
-            Destino : 'Calle 11 La punta de la Andromeda Tlalpan',
-            Usuario : 'Laura Gabriela Siller Monroy'
-            
-        },
-        {
-            Servicios: 'Telefonico',
-            Unidad: '105',
-            Origen: 'Natalia 123 Col Pedro de Almazan Azcapotzalco',
-            Destino : 'Ricardo Arjona 376 Benito Juarez',
-            Usuario : 'Anna Silvia Vazquez Hernandez'
-            
-        }
-];
+//    var informacion = JSON.parse(localStorage.Solicitud);
+//    $scope.Solicitud = {
+//    Origen: informacion.Origen.Calle + " " + informacion.Origen.Colonia + " " + informacion.Origen.Delegacion,
+//            Destino: informacion.Destino.Calle + " " + informacion.Destino.Colonia + " " + informacion.Destino.Delegacion,
+//            Usuario: informacion.Usuario.Nombre + " " + informacion.Usuario.ApellidoPaterno + " " + informacion.Usuario.ApellidoMaterno    
+//        };
+    $scope.Bitacoras = bitacoras;
     $scope.CerrarSesion = function () {
         localStorage.removeItem("Role");
         window.location.href = "#/";
