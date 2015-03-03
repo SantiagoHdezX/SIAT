@@ -1,16 +1,62 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel panel-heading">
+            <h2>Registrar Taxi</h2>
+        </div>
+        <div class="panel panel-body">
+            <form role="form">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Datos Personales</h3>
+                        <div class="form-group">
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" name="Nombre" class="form-control" ng-model="Register.Nombre" placeholder="Ingresa tu(s) nombre" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="ApellidoPaterno">Apellido Paterno</label>
+                            <input type="text" name="ApellidoPaterno" class="form-control" ng-model="Register.ApellidoPaterno" placeholder="Ingresa tu apellido paterno" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="ApellidoMaterno">Apellido Materno</label>
+                            <input type="text" name="ApellidoMaterno" class="form-control" ng-model="Register.ApellidoMaterno" placeholder="Ingresa tu apellido materno" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="CorreoElectronico">Correo Electronico</label>
+                            <input type="email" name="CorreoElectronico" class="form-control" ng-model="Register.CorreoElectronico" placeholder="Ingresa tu correo electronico" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="Telefono">Telefono</label>
+                            <input type="tel" name="Telefono" class="form-control" ng-model="Register.Telefono" placeholder="Ingresa tu contraseña" required="required">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Datos Automovil</h3>
+                        <div class="form-group">
+                            <label for="Marca">Marca</label>
+                            <input type="text" name="Marca" class="form-control" ng-model="Register.Taxi.Marca" placeholder="Ingrese la marca de su automovil" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="Unidad">Unidad</label>
+                            <input type="text" class="form-control" ng-model="Register.Taxi.Unidad" placeholder="Ingrese el nombre de la unidad" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Modelo">Modelo</label>
+                            <input type="number" class="form-control" ng-model="Register.Taxi.Modelo" placeholder="Ingrese el numero de modelo" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="Placa">Placa</label>
+                            <input type="text" class="form-control" ng-model="Register.Taxi.Placa" placeholder="Ingrese la placa del vehiculo" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="Aportacion">Aportacion Vehicular</label>
+                            <input type="number" class="form-control" ng-model="Register.Taxi.Aportacion" placeholder="Ingrese la aportacion semanal que dara el taxista">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success" ng-click="RegistrarTaxista(Register)" type="submit">Registrar Taxista</button>
+                &nbsp;
+                <a href="#/Admin" class="btn btn-warning">Salir</a>
+            </form>
+        </div>
+    </div>
+</div>

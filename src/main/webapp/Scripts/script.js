@@ -394,6 +394,37 @@ siatApp.controller('AdminCtrl', function ($scope) {
             window.location.href = "#/";
             break;
     }
+    
+    //    var informacion = JSON.parse(localStorage.Solicitud);
+//    $scope.Solicitud = {
+//    Origen: informacion.Origen.Calle + " " + informacion.Origen.Colonia + " " + informacion.Origen.Delegacion,
+//            Destino: informacion.Destino.Calle + " " + informacion.Destino.Colonia + " " + informacion.Destino.Delegacion,
+//            Usuario: informacion.Usuario.Nombre + " " + informacion.Usuario.ApellidoPaterno + " " + informacion.Usuario.ApellidoMaterno    
+//        };
+    $scope.Bitacoras = bitacoras;
+    $scope.Users = usuarios;
+    if (!(localStorage.NormalUser === undefined)) {
+        var isAlreadyCreated = false;
+        var usuario = JSON.parse(localStorage.NormalUser);
+        for (var User in $scope.Users) {
+            if (User.CorreoElectronico === usuario.CorreoElectronico) {
+                isAlreadyCreated = true;
+            }
+            else {
+                continue;
+            }
+        }
+        if (!isAlreadyCreated) {
+            $scope.Users.push(usuario);
+        }
+    }
+    $scope.Taxis = taxistas;
+    
+    $scope.RegistrarTaxista=function(Register){
+      localStorage.RegistroTaxista = angular.toJson(Register);
+      alert('Se ha registrado el taxista');
+      window.location.href="#/Admin";
+    };
 
     $scope.CerrarSesion = function () {
         localStorage.removeItem("Role");
