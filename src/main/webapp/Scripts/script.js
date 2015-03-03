@@ -99,6 +99,12 @@ var taxistasServicios = [{
     }
 ];
 
+var Aportacion = {
+    NumeroTaxistas: 4,
+    Promedio: 2500,
+    Total: 10000
+};
+
 var usuarios = [
     {
         Address: {
@@ -244,6 +250,10 @@ siatApp.config(function ($routeProvider) {
             })
             .when('/Central/Clientes', {
                 templateUrl: 'Views/Central/Clientes.html',
+                controller: 'CentralCtrl'
+            })
+            .when('/Central/AportacionSemanal', {
+                templateUrl: 'Views/Central/Aportacion.html',
                 controller: 'CentralCtrl'
             })
             // route for the about page
@@ -394,7 +404,7 @@ siatApp.controller('AdminCtrl', function ($scope) {
             window.location.href = "#/";
             break;
     }
-    
+
     //    var informacion = JSON.parse(localStorage.Solicitud);
 //    $scope.Solicitud = {
 //    Origen: informacion.Origen.Calle + " " + informacion.Origen.Colonia + " " + informacion.Origen.Delegacion,
@@ -419,11 +429,11 @@ siatApp.controller('AdminCtrl', function ($scope) {
         }
     }
     $scope.Taxis = taxistas;
-    
-    $scope.RegistrarTaxista=function(Register){
-      localStorage.RegistroTaxista = angular.toJson(Register);
-      alert('Se ha registrado el taxista');
-      window.location.href="#/Admin";
+
+    $scope.RegistrarTaxista = function (Register) {
+        localStorage.RegistroTaxista = angular.toJson(Register);
+        alert('Se ha registrado el taxista');
+        window.location.href = "#/Admin";
     };
 
     $scope.CerrarSesion = function () {
@@ -474,6 +484,12 @@ siatApp.controller('CentralCtrl', function ($scope) {
         }
     }
     $scope.Taxis = taxistas;
+    $scope.Aportacion = Aportacion;
+//    $scope.Promedio
+//    if (!(localStorage.RegistroTaxista === undefined)) {
+//        var temporal = JSON.parse(localStorage.RegistroTaxista);
+//
+//    }
     $scope.CerrarSesion = function () {
         localStorage.removeItem("Role");
         window.location.href = "#/";
