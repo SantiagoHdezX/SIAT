@@ -23,7 +23,7 @@
 
 ## Instalacion
 
-1. Debe descargar el proyecto en .zip o a traves de https://github.com/DOUXSYSTEM/SIAT.git usando Git
+1. Debe descargar el proyecto en .zip o a traves de https://github.com/ninjashadow/SIAT.git usando Git
 2. Abra el proyecto con NetBeans 8 (No se ha probado en 7.4, no funciona en <=7.3)
 3. Una vez descargado el proyecto, debera restaurar las dependencias de Maven
     - Esto se hace dando click derecho sobre el proyecto => `Build with dependencies`
