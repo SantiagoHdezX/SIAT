@@ -1,5 +1,7 @@
 # Sistema de Administracion de Transportes
 
+[![Build Status](https://travis-ci.org/ninjashadow/SIAT.svg?branch=master)](https://travis-ci.org/ninjashadow/SIAT)
+
 ## Integrantes
 - Fernández López Adrián Octavio
 - Garrido Morales Diego Edmundo
